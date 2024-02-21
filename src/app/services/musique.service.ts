@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Musique} from "../models/musique";
 import {environemt} from "../../environements/environemt";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,19 @@ import {environemt} from "../../environements/environemt";
 export class MusiqueService {
 
 
-  apiUrl = environemt.apiUrl+"musiques"
+  apiUrl: string = environemt.apiUrl+"musiques"
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) {
+
+  }
+
+  getOne(id: number):Observable<Musique>{
+    return this.httpClient.get<Musique>(this.apiUrl + "/" + id)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandler)
+      )
+  }
 
   getAll():Observable<Musique[]>{
     return this.httpClient.get<Musique[]>(this.apiUrl)
@@ -31,6 +42,20 @@ export class MusiqueService {
       }
       window.alert(errorMessage)
     return throwError(errorMessage)
+  }
+
+  delete(id: number):Observable<Musique>{
+  return this.httpClient.delete(this.apiUrl + "/"+ id).pipe(
+    retry(1),
+    catchError(this.errorHandler)
+  )
+  }
+
+  postMusique(musique:Musique):Observable<Musique>{
+    return  this.httpClient.post<Musique>(this.apiUrl,musique).pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
   }
 
 

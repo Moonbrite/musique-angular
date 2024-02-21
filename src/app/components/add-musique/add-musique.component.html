@@ -1,0 +1,36 @@
+<div class="example-container">
+  <h1>Ajout d'une musique</h1>
+  <form (ngSubmit)="submitForm(musique)" action="" class="d-flex flex-column container" #formMusique>
+
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input name="title" #title="ngModel" matInput placeholder="Title" [(ngModel)]="musique.title" required>
+        <mat-error *ngIf="!title.valid">Veuiller entrer un Titre</mat-error>
+      </mat-form-field>
+    <mat-form-field>
+      <mat-label>Auteur</mat-label>
+      <input name="auteur" #auteur="ngModel" matInput placeholder="auteur" [(ngModel)]="musique.auteur" required>
+      <mat-error *ngIf="!auteur.valid">Veuiller entrer un auteur</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>UrlYoutube</mat-label>
+      <input name="urlYoutube" #urlYoutube="ngModel" matInput placeholder="urlYoutube" [(ngModel)]="musique.urlYoutube" required >
+      <mat-error *ngIf="!urlYoutube.valid">Veuiller entrer un urlYoutube</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cover</mat-label>
+      <input name="cover" #cover="ngModel" matInput placeholder="cover" [(ngModel)]="musique.cover">
+      <mat-error *ngIf="!cover.valid">Veuiller entrer une cover</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input name="style" #style="ngModel" matInput placeholder="style" [(ngModel)]="musique.style" required>
+      <mat-error *ngIf="!style.valid">Veuiller entrer un style</mat-error>
+    </mat-form-field>
+
+    <button [disabled]="!formMusique" type="submit">Soummetre</button>
+  </form>
+</div>

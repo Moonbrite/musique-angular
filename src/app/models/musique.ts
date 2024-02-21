@@ -1,7 +1,8 @@
 import {style} from "@angular/animations";
+import {SafeUrl} from "@angular/platform-browser";
 
 export class Musique {
-  constructor(id: number, title: string, auteur: string, urlYoutube: string, cover: string, style: string) {
+  constructor(id?: number, title?: string, auteur?: string, urlYoutube?: string, cover?: string, style?: string) {
     this.id = id;
     this.title = title;
     this.auteur = auteur;
@@ -12,7 +13,7 @@ export class Musique {
   id?:number;
   title?:string;
   auteur?:string;
-  urlYoutube?:string;
+  urlYoutube?:string |SafeUrl;
   cover?:string;
   style?:string
 

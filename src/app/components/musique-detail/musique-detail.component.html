@@ -1,0 +1,19 @@
+
+<div class="display" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="musique" class="container text-center">
+  <h2>{{musique.title | titlecase}}</h2>
+  <div class="hover-image">
+    <div class="glow">
+      <img class="image" src="{{musique.cover}}" alt="">
+    </div>
+
+    <div class="vinyle"></div>
+  </div>
+  <p class="my-3"> Auteur : {{musique.auteur}}</p>
+  <p class="my-3">Le style : {{musique.style}}</p>
+  <iframe class="my-3" width="100%" height="500" [src]="musique.urlYoutube" title="캡틴 구스패로우"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+

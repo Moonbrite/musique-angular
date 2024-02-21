@@ -1,6 +1,6 @@
 <nav class="navbar">
   <ul>
-   <li class="logo brand  "><img src="assets/Spotify_logo_without_text.svg.png" alt="Spo"></li>
+   <li class="logo brand"><img src="assets/Spotify_logo_without_text.svg.png" alt="Spo"></li>
     <li class="brand">Spotify</li>
   </ul>
 </nav>
@@ -8,6 +8,7 @@
 <div class="display" *ngIf="isLoading">
   <mat-spinner style="color: #000;"></mat-spinner>
 </div>
+
 
 <div *ngIf="!isLoading" class="cover-score-wrapper">
   <div class="cover-score" style="opacity: 1;">
@@ -22,7 +23,13 @@
           <div class="cd"></div>
         </div>
       </div>
-      <button class="btn">En savoir plus</button>
+      <button [routerLink]="['/',musique.id]" class="btn-music">i</button>
+      <button class="mx-3" mat-raised-button (click)="deleteMusicModal('0ms', '0ms',musique.id)">Suprimer</button>
     </div>
+
   </div>
 </div>
+
+<section class="text-center">
+  <button *ngIf="!isLoading" [routerLink]="['ajout']" class="btn-music">Ajouter une musique</button>
+</section>

@@ -1,0 +1,85 @@
+img {
+  width: 530px;
+  height: 530px;
+  object-fit: cover;
+  position: relative;
+}
+
+.hover-image {
+  display: inline-block;
+}
+
+.hover-image:hover .vinyle {
+  transition: 1s all ease-in-out;
+  position: absolute;
+  left: 0;
+  animation: rotate 2s;
+}
+
+.display {
+  margin-top: 20px;
+  justify-content: center;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.vinyle {
+  transition: 2s all ease-in-out;
+  top: -10px;
+  left: 458px;
+  z-index: -1;
+  justify-content: center;
+  position: absolute;
+  width: 570px;
+  height: 570px;
+  background-image: url("https://img.freepik.com/photos-premium/disque-vinyle-noir-etiquette-vierge-blanche-fond-blanc-rendu-3d_476612-12395.jpg");
+}
+
+.glow {
+  overflow: hidden;
+  position: relative;
+}
+
+.glow:before {
+  z-index: 100;
+  content: "";
+  position: absolute;
+  left: -20%;
+  top: -10%;
+  width: 0;
+  height: 100%;
+  transform: rotate(15deg) scale(1, 2);
+  box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.7);
+  animation: button-glow 3000ms ease-in-out infinite;
+}
+
+@keyframes button-glow {
+  0% {
+    left: -20%;
+  }
+  50% {
+    left: 120%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@keyframes rotateslow {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+/*# sourceMappingURL=musique-detail.component.css.map */
