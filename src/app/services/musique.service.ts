@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {Musique} from "../models/musique";
 import {environemt} from "../../environements/environemt";
-import {DomSanitizer} from "@angular/platform-browser";
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +55,13 @@ export class MusiqueService {
       retry(1),
       catchError(this.errorHandler)
     )
+  }
+
+  editMusique(musique?: Musique, id?: number ):Observable<Musique>{
+   return this.httpClient.put(this.apiUrl + "/" + id,musique).pipe(
+     retry(1),
+     catchError(this.errorHandler)
+   )
   }
 
 

@@ -84,6 +84,10 @@ img {
   gap: 30px;
 }
 
+.cover {
+  margin-left: 90px;
+}
+
 .cover-score .cover {
   margin-right: 50px;
   -ms-flex-item-align: end;

@@ -23,8 +23,9 @@
           <div class="cd"></div>
         </div>
       </div>
-      <button [routerLink]="['/',musique.id]" class="btn-music">i</button>
-      <button class="mx-3" mat-raised-button (click)="deleteMusicModal('0ms', '0ms',musique.id)">Suprimer</button>
+      <button [routerLink]="['/',musique.id]" class="btn-music mx-3">i</button>
+      <button [routerLink]="['/edit',musique.id]" class="btn-music mx-3">Edit</button>
+      <button class="mx-3 btn-music"  (click)="deleteMusicModal('0ms', '0ms',musique.id)">Suprimer</button>
     </div>
 
   </div>

@@ -1,12 +1,12 @@
 <div class="example-container">
-  <h1>Ajout d'une musique</h1>
-  <form (ngSubmit)="submitForm(musique)" action="" class="d-flex flex-column container" #formMusique="ngForm">
+  <h1>Edit de la musique</h1>
+  <form *ngIf="musique" (ngSubmit)="submitForm(musique)" action="" class="d-flex flex-column container" #formMusique="ngForm">
 
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input name="title" #title="ngModel" matInput placeholder="Title" [(ngModel)]="musique.title" required>
-        <mat-error *ngIf="!title.valid">Veuiller entrer un Titre</mat-error>
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input name="title" #title="ngModel" matInput placeholder="Title" [(ngModel)]="musique.title" required>
+      <mat-error *ngIf="!title.valid">Veuiller entrer un Titre</mat-error>
+    </mat-form-field>
     <mat-form-field>
       <mat-label>Auteur</mat-label>
       <input name="auteur" #auteur="ngModel" matInput placeholder="auteur" [(ngModel)]="musique.auteur" required>
@@ -34,3 +34,4 @@
     <button [disabled]="!formMusique.valid" type="submit">Soummetre</button>
   </form>
 </div>
+
