@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Musique} from "../../models/musique";
 import {NgIf} from "@angular/common";
 import {MusiqueService} from "../../services/musique.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 
@@ -19,7 +19,8 @@ import {MatButtonModule} from "@angular/material/button";
     FormsModule,
     ReactiveFormsModule,
     NgIf,
-    MatButtonModule
+    MatButtonModule,
+    RouterLink
   ],
   templateUrl: './add-musique.component.html',
   styleUrl: './add-musique.component.scss'

@@ -3,6 +3,15 @@
    <li class="logo brand"><img src="assets/Spotify_logo_without_text.svg.png" alt="Spo"></li>
     <li class="brand">Spotify</li>
   </ul>
+
+  <ul>
+    <li>
+      <a [routerLink]="['/register']" >Crée un compte</a>
+    </li>
+    <li>
+      <a [routerLink]="['/login']" >Connection</a>
+    </li>
+  </ul>
 </nav>
 
 <div class="display" *ngIf="isLoading">

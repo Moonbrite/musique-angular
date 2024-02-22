@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div class="d-flex justify-content-between my-3">
+    <h2>Création de compte</h2>
+    <a class="" [routerLink]="['/login']" type="submit"> <--- Login</a>
+  </div>
+
+  <form *ngIf="user" (ngSubmit)="addUser()" #registerform="ngForm" action="" class="d-flex flex-column container">
+    <mat-form-field>
+      <mat-label>FirstName</mat-label>
+      <input #firstname="ngModel" name="firstname"  matInput placeholder="FistName" [(ngModel)]="user.firstName" required>
+      <mat-error *ngIf="!firstname.valid" >Veuiller entrer un FistName</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>LastName</mat-label>
+      <input name="lastName" #lastname="ngModel"  matInput placeholder="LastName"  [(ngModel)]="user.lastName" required>
+      <mat-error *ngIf="!lastname.valid" >Veuiller entrer un LastName</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input name="email" #email="ngModel"  matInput placeholder="Email"  [(ngModel)]="user.email" required>
+      <mat-error *ngIf="!email.valid" >Veuiller entrer un email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input name="password" #password="ngModel"  matInput placeholder="Password"  [(ngModel)]="user.password" required>
+      <mat-error *ngIf="!password.valid" >Veuiller entrer un email</mat-error>
+    </mat-form-field>
+
+    <div *ngIf="error" class="error">
+      <p>{{error}}</p>
+    </div>
+    <button class="btn btn-success" [disabled]="!registerform.valid" type="submit">Soummetre</button>
+  </form>
+</div>
+

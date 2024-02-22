@@ -26,11 +26,10 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Title</mat-label>
+      <mat-label>Add</mat-label>
       <input name="style" #style="ngModel" matInput placeholder="style" [(ngModel)]="musique.style" required>
       <mat-error *ngIf="!style.valid">Veuiller entrer un style</mat-error>
     </mat-form-field>
-
-    <button [disabled]="!formMusique.valid" type="submit">Soummetre</button>
+    <button class="btn btn-success" [disabled]="!formMusique.valid" type="submit">Soummetre</button>
   </form>
 </div>
