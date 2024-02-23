@@ -5,7 +5,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {
   MatDialog,
   MatDialogActions,
@@ -15,6 +15,7 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {ModalConfirmComponent} from "../modal-confirm/modal-confirm.component";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-music-list',
@@ -37,7 +38,7 @@ import {ModalConfirmComponent} from "../modal-confirm/modal-confirm.component";
 })
 export class MusicListComponent implements OnInit{
 
-  constructor(private musicService:MusiqueService,private matDialog :MatDialog) {
+  constructor(private musicService:MusiqueService,private matDialog :MatDialog, private router:Router, private userService:UserService) {
   }
 
   musiques?: Musique[];
@@ -45,6 +46,7 @@ export class MusicListComponent implements OnInit{
   isLoading = false;
 
   ngOnInit(): void {
+    console.log(localStorage.getItem('token'))
     this.isLoading = true;
     this.musicService.getAll().subscribe(data => {
       this.musiques = data;
@@ -60,11 +62,17 @@ export class MusicListComponent implements OnInit{
       });
     dialog.afterClosed().subscribe(result =>{
       if (result ) {
-        this.isLoading = true;
-        this.musicService.delete(<number>id).subscribe(data =>{
+          this.isLoading = true;
+          this.musicService.delete(<number>id).subscribe(data =>{
           this.ngOnInit();
         })
       }
     })
+  }
+
+  logOut() {
+    localStorage.clear()
+    this.router.navigate(['/login'])
+    this.userService.isLogout()
   }
 }

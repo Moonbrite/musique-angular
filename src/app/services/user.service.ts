@@ -17,6 +17,7 @@ export class UserService {
 
   apiUrlAuth: string = environemt.apiAuth
 
+  isAuthenticated: boolean = false;
 
   getAll():Observable<User[]>{
     return this.httpClient.get<User[]>(this.apiUrl)
@@ -49,6 +50,15 @@ export class UserService {
       retry(1),
       catchError(this.errorHandler)
     )
+  }
+
+
+  isLogin(){
+    this.isAuthenticated = true;
+  }
+
+  isLogout(){
+    this.isAuthenticated = false
   }
 
 

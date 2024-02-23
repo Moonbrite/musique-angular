@@ -16,6 +16,7 @@
 
     <div *ngIf="error">
       <p class="text-danger">Invalid credentials</p>
+      {{error}}
     </div>
 
     <button id="btn-connect" [disabled]="!loginform.valid" class="btn btn-success" type="submit">Soummetre</button>

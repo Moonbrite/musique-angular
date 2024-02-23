@@ -32,6 +32,7 @@ export class LoginComponent {
 
 
   constructor(private userService :UserService, private router: Router) {
+    console.log(localStorage.getItem('token'))
   }
 
   user:User = new User();
@@ -42,8 +43,11 @@ export class LoginComponent {
     const  btnSubmit = document.getElementById('btn-connect');
     btnSubmit?.classList.add("disabled");
     this.userService.loginUser(this.user).subscribe( data => {
+      let chaine = JSON.stringify(data);
+      let jeton = chaine.split(':')[1].trim().replace(/["{}]/g, '');
+      localStorage.setItem('token',jeton)
       this.router.navigate(['']);
-      console.log(data)
+      this.userService.isLogin();
     },error => {
       btnSubmit?.classList.remove("disabled")
       this.error = error.type
