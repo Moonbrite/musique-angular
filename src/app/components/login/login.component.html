@@ -4,17 +4,21 @@
 
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input name="email" matInput placeholder="Email"  required>
-<!--      <mat-error *ngIf="!email.valid" >Veuiller entrer un email</mat-error>-->
+      <input #email="ngModel" name="email" matInput placeholder="Email" [(ngModel)]="user.email"  required>
+     <mat-error *ngIf="!email.valid" >Veuiller entrer un email</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input name="password" matInput placeholder="Password"  required>
-<!--      <mat-error *ngIf="!password.valid" >Veuiller entrer un email</mat-error>-->
+      <input #password="ngModel" name="password" matInput placeholder="Password" [(ngModel)]="user.password"  required>
+     <mat-error *ngIf="!password.valid" >Veuiller entrer un email</mat-error>
     </mat-form-field>
 
-    <button [disabled]="!loginform.valid" class="btn btn-success" type="submit">Soummetre</button>
+    <div *ngIf="error">
+      <p class="text-danger">Invalid credentials</p>
+    </div>
+
+    <button id="btn-connect" [disabled]="!loginform.valid" class="btn btn-success" type="submit">Soummetre</button>
 
   </form>
 </div>

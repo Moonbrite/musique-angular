@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -30,18 +31,22 @@ import {UserService} from "../../services/user.service";
 export class LoginComponent {
 
 
-  constructor(private userService :UserService) {
+  constructor(private userService :UserService, private router: Router) {
   }
 
-  users?:User [];
+  user:User = new User();
 
+  error?: string;
 
   connectUser() {
-    console.log(this.userService.getAll().subscribe(
-      data=>{
-        this.users = data
-        console.log(this.users)
-      }
-    ))
+    const  btnSubmit = document.getElementById('btn-connect');
+    btnSubmit?.classList.add("disabled");
+    this.userService.loginUser(this.user).subscribe( data => {
+      this.router.navigate(['']);
+      console.log(data)
+    },error => {
+      btnSubmit?.classList.remove("disabled")
+      this.error = error.type
+    })
   }
 }

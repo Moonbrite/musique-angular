@@ -15,6 +15,8 @@ export class UserService {
 
   apiUrl: string = environemt.apiUrl+"users"
 
+  apiUrlAuth: string = environemt.apiAuth
+
 
   getAll():Observable<User[]>{
     return this.httpClient.get<User[]>(this.apiUrl)
@@ -22,11 +24,6 @@ export class UserService {
         retry(1),
         catchError(this.errorHandler)
       );
-  }
-
-
-  getAllUser(){
-
   }
 
 
@@ -39,6 +36,13 @@ export class UserService {
     return throwError( () => new ErrorEvent(error.error["hydra:description"]))
   }
 
+
+  loginUser(user:User):Observable<User>{
+    return  this.httpClient.post<User>(this.apiUrlAuth,user).pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    )
+  }
 
   registerUser(user:User):Observable<User>{
     return this.httpClient.post<User>(this.apiUrl,user).pipe(
